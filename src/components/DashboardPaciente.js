@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import AgregarCita from './AgregarCita';
-import ListaCitas from './ListaCitas';
+import MiAnimalDetalles from './MiAnimalDetalles';
+import ListaPaciente from './ListaPaciente';
 
-class App extends Component {
+class DashboardAdministrador extends Component {
 
   state = {
     citas: {}
@@ -48,17 +48,19 @@ class App extends Component {
       citas:citas
     });
   }
+ 
 
   render() {
     return (
       <div className="container">
-        <Header titulo="Administrador de Pacientes de Veterinaria" />
+   
+        <Header titulo="Clinica veterinaria Dog Lovers" />
         <div className="row">
           <div className="col-md-6">
-            <AgregarCita crearCita={this.crearCita} />
+            <MiAnimalDetalles crearCita={this.crearCita} />
           </div>
           <div className="col-md-6">
-            <ListaCitas citas={this.state.citas} borrarCita={this.borrarCita}/>
+            <ListaPaciente citas={this.state.citas} borrarCita={this.borrarCita}/>
           </div>
         </div>
       </div>
@@ -66,4 +68,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default DashboardAdministrador;

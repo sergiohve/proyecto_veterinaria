@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import Cita from './Cita';
-import PropTypes from 'prop-types';
+import Paciente from './Paciente';
 
-class ListaCitas extends Component {
+
+class ListaPaciente extends Component {
+    
+
+    
     render() {
 
         const citas = this.props.citas;
-        const mensajes = Object.keys(citas).length === 0 ? "No hay Citas" : "Administra tus citas aquí";
+        const mensajes = Object.keys(citas).length === 0 ? "Ningun paciente registrado" : "Pacientes:";
 
         return (
             <div className="card mt-5">
@@ -14,7 +17,7 @@ class ListaCitas extends Component {
                     <h2 className="card-title text-center">{mensajes}</h2>
                     <div className="lista-citas">
                         {Object.keys(this.props.citas).map(cita => (
-                          <Cita idCita={cita} key={cita} info={this.props.citas[cita]} borrarCita={this.props.borrarCita} />  
+                          <Paciente idCita={cita} key={cita} info={this.props.citas[cita]} borrarCita={this.props.borrarCita} />  
                         ))}
                     </div>
                 </div>
@@ -23,9 +26,6 @@ class ListaCitas extends Component {
     }
 }
 
-ListaCitas.propTypes = {
-    citas: PropTypes.object.isRequired,
-    borrarCita: PropTypes.func.isRequired
-}
 
-export default ListaCitas;
+
+export default ListaPaciente;
