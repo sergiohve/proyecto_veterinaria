@@ -3,7 +3,7 @@ import PacienteAdmin from './PacienteAdmin';
 
 
 
-class ListaPaciente extends Component {
+class ListaPacienteAdmin extends Component {
     
 
     

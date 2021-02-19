@@ -10,7 +10,7 @@ class ListaPaciente extends Component {
     render() {
 
         const citas = this.props.citas;
-        const mensajes = Object.keys(citas).length === 0 ? "Ningun paciente registrado" : "Pacientes:";
+        const mensajes = Object.keys(citas).length === 0 ? "Sin registro de tu perro" : "Detalles de mi animal";
 
         return (
             <div className="card mt-5">

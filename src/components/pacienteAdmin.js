@@ -16,9 +16,11 @@ class PacienteAdmin extends Component {
                     <p className="card-text"><span>Remedios:</span>{remedios}</p>
                    
                     <button type="button" onClick={() => this.props.borrarCita(this.props.idCita)} className="btn btn-danger">Borrar</button>&nbsp;
-                      <button type="button" onClick={() => this.props.borrarCita(this.props.idCita)} className="btn btn-primary">Actualizar </button>
+                      <button type="button"  className="btn btn-primary">Actualizar </button>
                    
                 </div>
+
+                
             </div>
         );
         

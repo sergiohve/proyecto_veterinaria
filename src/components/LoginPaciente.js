@@ -31,7 +31,7 @@ export default function LoginPaciente() {
   <div id="formContent">
     
         <div className="fadeIn first">
-         <h2>Login Paciente</h2>
+         <h2>Login Cliente</h2>
         </div>
 
        

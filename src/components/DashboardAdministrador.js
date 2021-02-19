@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import NuevoPacienteAdministrador from './NuevoPacienteAdministrador';
-import ListaPaciente from './ListaPaciente';
+import ListaPacienteAdmin from './ListaPacienteAdmin';
 //cookies
 import Cookies from "universal-cookie";
 
@@ -66,7 +66,7 @@ class DashboardAdministrador extends Component {
  
  
   render() {
-         const {edad, vacunas,enfermedades, remedios, foto} = this.props;
+        
         
        
 
@@ -79,7 +79,7 @@ class DashboardAdministrador extends Component {
         <div className="row">
          
           <div className="col-md-6">
-            <ListaPaciente citas={this.state.citas} borrarCita={this.borrarCita}/>
+            <ListaPacienteAdmin citas={this.state.citas} borrarCita={this.borrarCita}/>
           </div>
         </div>
       </div>

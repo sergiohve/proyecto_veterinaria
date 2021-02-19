@@ -66,7 +66,7 @@ class MiAnimalDetalles extends Component {
                         <div className="form-group row">
                             <label className="col-sm-8 col-lg-12 col-form-label">Foto del Animal</label>
                             <div className="col-sm-9 col-lg-12">
-                               <input type="file" ref={this.fotoRef}  className="form-control" placeholder="Foto" required/>
+                               <input type="file" ref={this.fotoRef}  className="form-control" placeholder="Foto"/>
                             </div>
                         </div>
               
