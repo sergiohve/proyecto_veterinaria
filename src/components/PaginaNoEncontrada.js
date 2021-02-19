@@ -3,7 +3,7 @@ import React from 'react'
 const PaginaNoEncontrada = () => {
     return (
         <div>
-            <h1>Pagina No Encontrada</h1>
+            <h1 style={{color:"white", textAlign: "center", marginTop: "200px"}}>Pagina No Encontrada</h1>
         </div>
     )
 }

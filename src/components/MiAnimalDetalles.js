@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class MiAnimalDetalles extends Component {
     
-    nombreMascotaRef = React.createRef();
+
     enfermedadesRef = React.createRef();
     edadRef = React.createRef();
     horaRef = React.createRef();
@@ -15,7 +15,7 @@ class MiAnimalDetalles extends Component {
 
         //Crear el objeto
         const nuevaCita = {
-            nombreMascota: this.nombreMascotaRef.current.value,
+           
             vacunas: this.enfermedadesRef.current.value,
             edad: this.edadRef.current.value,
             enfermedades: this.enfermedadesRef.current.value,
@@ -37,7 +37,7 @@ class MiAnimalDetalles extends Component {
                         <div className="form-group row">
                             <label className="col-sm-8 col-lg-12 col-form-label">Edad</label>
                             <div className="col-sm-12 col-lg-12">
-                                <input ref={this.edadRef} type="number" placeholder="Edad" className="form-control" required/>
+                                <input ref={this.edadRef} type="number" placeholder="Edad" className="form-control" max="14" min="0 " required/>
                             </div>
 
                            
@@ -45,7 +45,7 @@ class MiAnimalDetalles extends Component {
                         <div className="form-group row">
                             <label className="col-sm-8 col-lg-12 col-form-label">Vacunas que se han administrado</label>
                             <div className="col-sm-8 col-lg-12">
-                                <input ref={this.vacunasref} type="text" className="form-control"  placeholder="Vacunas"/>
+                                <input ref={this.vacunasref} className="form-control"  placeholder="Vacunas"/>
                             </div>
                         </div>
 
@@ -72,7 +72,7 @@ class MiAnimalDetalles extends Component {
               
                         <div className="form-group row justify-content-end">
                             <div className="col-sm-3">
-                                <button type="submit" className="btn btn-success w-100">Agregar</button>
+                                <button type="submit" className="btn btn-primary w-100">Agregar</button>
                             </div>
                         </div>
                     </form>

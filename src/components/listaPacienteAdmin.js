@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Paciente from './Paciente';
+import PacienteAdmin from './PacienteAdmin';
 
 
 
@@ -18,7 +18,7 @@ class ListaPaciente extends Component {
                     <h2 className="card-title text-center">{mensajes}</h2>
                     <div className="lista-citas">
                         {Object.keys(this.props.citas).map(cita => (
-                          <Paciente idCita={cita} key={cita} info={this.props.citas[cita]} borrarCita={this.props.borrarCita} />  
+                          <PacienteAdmin idCita={cita} key={cita} info={this.props.citas[cita]} borrarCita={this.props.borrarCita} />  
                           
                         ))}
                     </div>
@@ -30,4 +30,4 @@ class ListaPaciente extends Component {
 
 
 
-export default ListaPaciente;
+export default ListaPacienteAdmin;

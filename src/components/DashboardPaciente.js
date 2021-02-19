@@ -9,7 +9,7 @@ class DashboardAdministrador extends Component {
     citas: {}
   }
 
-  //como el document ready
+
   componentDidMount(){
     const citasLS = localStorage.getItem('citas');
 
@@ -20,7 +20,7 @@ class DashboardAdministrador extends Component {
     }
   }
 
-  // cuando hay un cambio en el state
+  
   componentDidUpdate(){
     localStorage.setItem('citas', JSON.stringify(this.state.citas));
   }
@@ -55,6 +55,8 @@ class DashboardAdministrador extends Component {
       <div className="container">
    
         <Header titulo="Clinica veterinaria Dog Lovers" />
+
+         <h3 style={{color: "white", marginTop: "20px"}}>Bienvenida Leidys Velasquez</h3>
         <div className="row">
           <div className="col-md-6">
             <MiAnimalDetalles crearCita={this.crearCita} />

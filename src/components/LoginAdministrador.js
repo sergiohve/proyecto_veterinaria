@@ -1,116 +1,106 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+//css
+import "../css/login.css";
+
+//Servicios de peticion
+import { Apirest } from "../services/Apirest";
+
+//axios
+import axios from "axios";
+//Encriptacion md5
+import md5 from "md5";
+//cookies
+import Cookies from "universal-cookie";
 
 
 
-function CambioLogin() {
+const baseUrl= "http://localhost:3001/usuarios";
+const cookies = new Cookies();
+
+class LoginAdministrador extends Component{
+  state={
+        form:{
+            username: '',
+            password: ''
+        }
+    }
+
+    handleChange=async e=>{
+        await this.setState({
+            form:{
+                ...this.state.form,
+                [e.target.name]: e.target.value
+            }
+        });
+        console.log(this.state.form)
+    }
+
+    iniciarSesion= async(e)=>{
+      
+      e.preventDefault();
+       await axios.get(baseUrl, {params: {username: this.state.form.username, password: md5(this.state.form.password)}})
+       
+        .then(response=>{
+            return response.data;
+        })
+        .then(response=>{
+           if(response.length>0){
+                var respuesta=response[0];
+                cookies.set('id', respuesta.id, {path: "/"});
+                cookies.set('apellido_paterno', respuesta.apellido_paterno, {path: "/"});
+                cookies.set('apellido_materno', respuesta.apellido_materno, {path: "/"});
+                cookies.set('nombre', respuesta.nombre, {path: "/"});
+                cookies.set('username', respuesta.username, {path: "/"});
+                alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido_paterno}`);
+                window.location.href="/DashboardAdministrador";
+              
+            }
+            else{
+                
+                alert('El usuario o la contraseña no son correctos');
+            }
+        })
+      .catch(()=>{
+        alert("Usuario/Contraseña incorrectos");
+      })
+
+
+    }
+ 
+
+
+
+
+
+render(){
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      Si NO eres administrador<br />
-      <Link color="inherit" to="/LoginPaciente">
-       Ingresa AQui
-      </Link>
-    </Typography>
-  );
-}
-
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+   <div className="wrapper fadeInDown">
+  <div id="formContent">
     
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: "black",
-  },
-  form: {
-    width: '80%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-    color: "black",
-    
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+        <div className="fadeIn first">
+         <h2>Login Administrador</h2>
+        </div>
+        
+       
+        <form onSubmit={this.onSubmit}>
+          <input type="text"  className="fadeIn second" name="username" onChange={this.handleChange}  placeholder="Usuario"  required/>
+          <input type="password"  className="fadeIn third" name="password" onChange={this.handleChange}  placeholder="Contraseña" required/><br/>
+      <button className="btn btn-primary bt" onClick={this.iniciarSesion}>Ingresar</button>
 
-export default function LoginAdministrador() {
-  const classes = useStyles();
-  
-  
-
-  return (
-    <Container component="main" maxWidth="xs" >
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-         Login Administrador
-        </Typography>
-        <form className={classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="usuario"
-            label="Usuario"
-            name="usuario"
-            autoComplete="usuario"
-            autoFocus
-            required
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Contraseña"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            required
-          />
-         
-          <Link to="/DashboardAdministrador">
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Ingresar
-          </Button>
-          </Link>
-          <Grid container>
-            <Grid item xs>
-             
-            </Grid>
-           
-          </Grid>
+      
         </form>
-      </div>
-       <Box mt={8}>
-        <CambioLogin />
-      </Box>
-    </Container>
+
+       
+        <div id="formFooter">
+          <a className="underlineHover" href="/LoginPaciente">Login Cliente</a>
+        </div>
+
+  </div>
+</div>
   );
+  
 }
+}
+
+export default LoginAdministrador;

@@ -3,24 +3,23 @@ import React, { Component } from 'react';
 
 class NuevoPacienteAdministrador extends Component {
     
-    nombreMascotaRef = React.createRef();
+
     enfermedadesRef = React.createRef();
-    edadRef = React.createRef();
-    horaRef = React.createRef();
+   
     enfermedadesRef = React.createRef();
     remediosRef= React.createRef();
-    fotoRef= React.createRef();
+
     crearNuevaCita = (e) => {
         e.preventDefault();
 
         //Crear el objeto
         const nuevaCita = {
-            nombreMascota: this.nombreMascotaRef.current.value,
+            
             vacunas: this.enfermedadesRef.current.value,
-            edad: this.edadRef.current.value,
+            
             enfermedades: this.enfermedadesRef.current.value,
             remedios: this.remediosRef.current.value,
-            foto:this.fotoRef.current.value,
+          
         }
 
         this.props.crearCita(nuevaCita);
@@ -36,7 +35,7 @@ class NuevoPacienteAdministrador extends Component {
                      <div className="form-group row">
                             <label className="col-sm-8 col-lg-12 col-form-label">Vacunas que se le va a administrar</label>
                             <div className="col-sm-8 col-lg-12">
-                                <input ref={this.vacunasref} type="text" className="form-control"  placeholder="Vacunas"/>
+                                <input ref={this.vacunasref}  className="form-control"  required/>
                             </div>
                         </div>
 
@@ -45,13 +44,13 @@ class NuevoPacienteAdministrador extends Component {
                         <div className="form-group row">
                             <label className="col-sm-8 col-lg-12 col-form-label">Diagnostico de enfermedades</label>
                             <div className="col-sm-9 col-lg-12">
-                                <textarea ref={this.enfermedadesRef} placeholder="Enfermedades" className="form-control" required></textarea>
+                                <textarea ref={this.enfermedadesRef} className="form-control" required></textarea>
                             </div>
                         </div>
                         <div className="form-group row">
                             <label className="col-sm-8 col-lg-12 col-form-label">Receta de algun medicamento</label>
                             <div className="col-sm-9 col-lg-12">
-                                <textarea ref={this.remediosRef}  className="form-control" placeholder="Remedios" required></textarea>
+                                <textarea ref={this.remediosRef}  className="form-control"  required></textarea>
                             </div>
                         </div>
                        
@@ -63,6 +62,8 @@ class NuevoPacienteAdministrador extends Component {
                         </div>
                     </form>
                 </div>
+
+
         </div>
         )
     }

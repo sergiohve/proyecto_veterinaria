@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Header from './Header';
 import NuevoPacienteAdministrador from './NuevoPacienteAdministrador';
 import ListaPaciente from './ListaPaciente';
+//cookies
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 class DashboardAdministrador extends Component {
 
@@ -9,10 +13,17 @@ class DashboardAdministrador extends Component {
     citas: {}
   }
 
-  //como el document ready
-  componentDidMount(){
-    const citasLS = localStorage.getItem('citas');
+  
 
+  
+
+  
+  componentDidMount(){
+   
+   
+    
+    const citasLS = localStorage.getItem('citas');
+    
     if (citasLS) {
       this.setState({
         citas: JSON.parse(citasLS)
@@ -47,18 +58,26 @@ class DashboardAdministrador extends Component {
     this.setState({
       citas:citas
     });
+    console.log(this.props.citas)
   }
- 
 
+  
+ 
+ 
+ 
   render() {
+         const {edad, vacunas,enfermedades, remedios, foto} = this.props;
+        
+       
+
     return (
       <div className="container">
+      
    
         <Header titulo="Clinica veterinaria Dog Lovers" />
+         <h3 style={{color: "white", marginTop: "20px"}}>Bienvenido Sergio Herrera</h3>
         <div className="row">
-          <div className="col-md-6">
-            <NuevoPacienteAdministrador crearCita={this.crearCita} />
-          </div>
+         
           <div className="col-md-6">
             <ListaPaciente citas={this.state.citas} borrarCita={this.borrarCita}/>
           </div>
